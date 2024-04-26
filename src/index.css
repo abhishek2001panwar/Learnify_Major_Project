@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar:hover{
+ 
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  
+
+}
