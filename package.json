@@ -13,6 +13,7 @@
     "@nextui-org/react": "^2.3.6",
     "axios": "^1.6.8",
     "framer-motion": "^11.1.7",
+    "marked": "^12.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",

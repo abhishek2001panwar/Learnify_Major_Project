@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from './partials/Sidebar'
 import Topnav from './partials/Topnav'
 import Horizontal from './partials/Horizontal'
 import Trending from './partials/Trending'
 
 function Home() {
+
+  const [loading, setloading] = useState(false)
+  
+
   return (
     <>
     <div className='w-full h-screen'>

@@ -9,6 +9,7 @@ import Register from './components/Register'
 import Project from './components/Project'
 import Blog from './components/Blog'
 import MyCourses from './components/Mycourses'
+import Profile from './components/Profile'
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/project" element={<Project/>} />
         <Route path="/blog" element={<Blog/>} />
         <Route path="/mycourses" element={<MyCourses/>} />
+        <Route path="/profile" element={<Profile/>} />
 
 
 
