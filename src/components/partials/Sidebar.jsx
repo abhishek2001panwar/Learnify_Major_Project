@@ -6,7 +6,7 @@ function Sidebar() {
   return (
     <div className="p-8 fixed ">
       <div className="p-8">
-        <h1 className="text-2xl font-light flex gap-3">
+        <h1 className="text-2xl font-light flex gap-3 font-dancing-script">
           <img className="h-10 w-10 rounded-lg" src={Image} alt="" />
           {/* <i class="ri-movie-fill pr-3"></i>*/} Learnify 
         </h1>
@@ -38,7 +38,7 @@ function Sidebar() {
         </Link>
         <Link to="/mycourses">
           <div className="flex items-center p-4 active:border-2 active:rounded-md">
-            <i class="ri-movie-2-line pr-3"></i>
+          <i class="ri-bookmark-fill pr-3"></i>
             <span>My courses</span>
           </div>
         </Link>

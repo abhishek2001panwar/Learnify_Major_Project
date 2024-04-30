@@ -8,7 +8,7 @@ function About() {
       <div className="flex w-full">
         <Sidebar />
         <div className="w-[80%] bg-transparent ml-[40vh] p-8">
-          <div className="flex flex-col items-center  w-full h-screen bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-lg shadow-xl">
+          <div className="flex flex-col items-center  w-full h-screen bg-white bg-opacity-30 backdrop-filterrounded-lg ">
               <h1 className="text-4xl font-light mb-4">About Us</h1>
               <Image
                 width={300}

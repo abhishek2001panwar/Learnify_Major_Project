@@ -10,6 +10,7 @@ import Project from './components/Project'
 import Blog from './components/Blog'
 import MyCourses from './components/Mycourses'
 import Profile from './components/Profile'
+import Admin from './components/Admin'
 
 
 
@@ -28,6 +29,9 @@ function App() {
         <Route path="/blog" element={<Blog/>} />
         <Route path="/mycourses" element={<MyCourses/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/admin" element={<Admin/>} />
+
+        
 
 
 

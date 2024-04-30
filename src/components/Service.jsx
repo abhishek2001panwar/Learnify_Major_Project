@@ -27,7 +27,7 @@ const Service = () => {
         <Sidebar />
         <div className="w-[80%] bg-transparent ml-[40vh] p-8">
           <div className='w-full ma'>
-            <section className="py-56 bg-gray-100">
+            <section className="py-56">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                   <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
