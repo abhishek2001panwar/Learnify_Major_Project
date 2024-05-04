@@ -41,7 +41,7 @@ fetchData();
           <div className="w-[80%] bg-transparent ml-[40vh]   p-20 flex flex-wrap gap-8">
 
             { courses.map((elem ,index) => {
-              return  <Card className="max-w-[400px]">
+              return  <Card key={index} className="max-w-[400px]">
               <CardHeader className="flex gap-3">
                 <i class="ri-arrow-right-circle-fill text-3xl"></i>
 
@@ -52,16 +52,14 @@ fetchData();
               <Divider />
               <CardBody>
                 <p>
-                 {elem.description.slice(0, 150)}<Link href="">....more</Link>
+                 {elem.description.slice(0, 150)}<Link className="text-teal-500" href={`/coursedetail/${elem._id}`}>....more</Link>
                 </p>
               </CardBody>
               <Divider />
               <CardFooter>
-                <Link>
-                  <Button color="default" variant="ghost">
-                    View course
-                  </Button>
-                </Link>
+              <Link className="text-teal-500" href={`/coursedetail/${elem._id}`}>
+           View Project
+    </Link>
               </CardFooter>
             </Card>
             })}

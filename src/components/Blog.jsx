@@ -42,11 +42,11 @@ useEffect(() => {
           </CardHeader>
           <Divider />
           <CardBody>
-            <p>{elem.content.slice(0 , 200 )}</p><Link className="text-teal-500" to={''}>....Read More</Link>
+            <p>{elem.content.slice(0 , 200 )}</p><Link className="text-teal-500" href={`/blogdetail/${elem._id}`}>....Read More</Link>
           </CardBody>
           <Divider />
           <CardFooter>
-            <Link
+            <Link href={`/blogdetail/${elem._id}`}
               
             >
               <Button color="default" variant="ghost">

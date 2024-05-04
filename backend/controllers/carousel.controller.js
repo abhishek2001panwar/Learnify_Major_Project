@@ -37,10 +37,12 @@ export const getAllCarousel = async (req, res) => {
 
 export const getOneCarousel = async (req, res) => {
   try {
-    const data = await Carousel.findOne({});
+
+const {id} = req.params
+    const carousel = await Carousel.findById(id);
     res.status(200).json({
       message: "Carousel data retrieved successfully",
-      data: data,
+      carousel: carousel,
     });
    
   } catch (error) {

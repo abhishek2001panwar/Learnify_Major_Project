@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AdminNavbar from "./AdminNavbar";
 
 function Admin() {
   const [user, setUser] = useState([]);
@@ -96,6 +97,7 @@ function Admin() {
 
   return (
     <>
+    <AdminNavbar/>
       <div className="p-10">
         <div>
           <h1 className="text-xl font-bold mb-4">User Details</h1>

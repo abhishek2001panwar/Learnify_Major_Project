@@ -39,3 +39,18 @@ export const getAllBlogs = async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+export const getOneBlogs = async (req, res) => {
+  try {
+    
+    const blog = await Blog.findById(req.params.id);
+    return res.status(200).json({
+      message: "Blog retrieved successfully",
+      blog:blog
+    });
+
+  } catch (error) {
+    // Handle errors
+    console.error("Error getting all blog posts:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};

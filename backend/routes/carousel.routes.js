@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.post('/addcarousel',getCarousel )
 router.get('/getallcarousel' , getAllCarousel)
-router.get('/getonecarousel', getOneCarousel)
+router.get('/getonecarousel/:id', getOneCarousel)
 
 export  {router};

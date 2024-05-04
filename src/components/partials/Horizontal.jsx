@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Horizontal() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,7 +10,7 @@ function Horizontal() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/v1/carousel/getallcarousel", {
+        const response = await fetch("/api/v1/carousel/getallcarousel", {
           method: "GET",
         });
         if (!response.ok) {
@@ -31,6 +32,7 @@ function Horizontal() {
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === carousel.length - 1 ? 0 : prevIndex + 1
+    
     );
   };
 
@@ -54,26 +56,23 @@ function Horizontal() {
         <div className="w-full h-[70vh] relative flex">
           {/* Render current course */}
           {carousel.map((elem, index) => (
-            <div className={`absolute top-[40%] left-[10%] transition-opacity duration-300 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`} key={index}>
+            <div  className={`absolute top-[40%] left-[10%] transition-opacity duration-300 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`} key={index}>
               <h1 className="text-3xl font-bold mb-7 text-slate-400">{elem.title}</h1>
               <h2 className="w-1/2">{elem.description}</h2>
               <div className="flex flex-col gap-5 mt-2">
                 <h1>
                   <span>
-                    <i className="ri-calendar-event-line mr-2"></i>
+                    <i className="ri-calendar-event-line mr-2 mb-5"></i>
                   </span>
-                  {elem.projectLink}
+                  <Link to={`${elem.projectLink}`} >Source Code</Link>
                 </h1>
                 <h1>
                   <span>
                     <i className="ri-calendar-event-line mr-2"></i>
                   </span>
-                  <a href={elem.projectLink}>View Course</a>
+                  <a href={`/carouseldetail/${elem._id}`}>View Course</a>
                 </h1>
               </div>
-              <button className={`px-10 py-1 mt-10  ${ index === currentIndex ? '   bg-teal-500 ': 'hover:text-teal-500 hover:bg-zinc-200 ' }rounded-md text-white`}>
-                View course
-              </button>
             </div>
           ))}
         </div>

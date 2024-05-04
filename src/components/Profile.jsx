@@ -38,19 +38,14 @@ function Profile() {
             <li>Location: City, Country</li>
           </ul>
         </div>
-        <div className="mt-4 flex justify-between">
+        <div className="mt-4 flex justify-center gap-5">
           <button className="bg-teal-500 hover:bg-white hover:text-teal-500  text-white font-light py-1 px-4 rounded">
             Edit Profile
           </button>
-          <button className="bg-teal-500 hover:bg-white hover:text-teal-500  text-white font-light py-1 px-4 rounded">
-            Add Project
-          </button>
-          <button className="bg-teal-500 hover:bg-white hover:text-teal-500  text-white font-light py-1 px-4 rounded">
-            Add Blog
-          </button>
-          <button className="bg-teal-500 hover:bg-white hover:text-teal-500  text-white font-light py-1 px-4 rounded">
+         
+          <Link to={'/courses'} className="bg-teal-500 hover:bg-white hover:text-teal-500  text-white font-light py-1 px-4 rounded">
             Explore Courses
-          </button>
+          </Link >
         </div>
       </div>
     </>

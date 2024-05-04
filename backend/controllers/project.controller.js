@@ -37,22 +37,48 @@ export const getAllProjects = async (req, res) => {
 
 
 }
+// Controller function to get a project by ID
+// export const getProjectById = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const project = await Project.findById(id);
 
+//     if (!project) {
+//       return res.status(404).json({
+//         error: "Project not found",
+//       });
+//     }
+
+//     return res.status(200).json({
+//       message: "Project retrieved successfully",
+//       project,
+//     });
+//   } catch (error) {
+//     console.error("Error getting project:", error.message);
+//     return res.status(500).json({
+//       error: "Internal server error",
+//     });
+//   }
+// };
 export const getProjectById = async (req, res) => {
-try {
-  const {id } = req.params
-  const project = await Project.findById(id)
-  return res.status(201).json({
-    message: " Project retrived successfully",
-    project: project,
-  });
+  try {
+    const { id } = req.params; // Yahan 'params' se 'id' extract karna chahiye
+    const project = await Project.findById(id);
 
+    if (!project) {
+      return res.status(404).json({
+        error: "Project not found",
+      });
+    }
 
-} catch (error) {
-  console.log(error , " error getting project")
-    res.status(500).json({
+    return res.status(200).json({
+      message: "Project retrieved successfully",
+      project,
+    });
+  } catch (error) {
+    console.error("Error getting project:", error.message);
+    return res.status(500).json({
       error: "Internal server error",
     });
-}
-
-}
+  }
+};

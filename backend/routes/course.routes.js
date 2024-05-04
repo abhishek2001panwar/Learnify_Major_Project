@@ -15,13 +15,13 @@ router.get("/allcourses", getAllCourses);
 router.post("/postcourse", postCourse);
 
 //route for single course
-router.get("/singlecourse:id", getCourse);
+router.get("/singlecourse/:id", getCourse);
 
 //route for deleting a course
 
-router.delete("/deletecourse:id", deleteCourse);
+router.delete("/deletecourse/:id", deleteCourse);
 
 //route for updating a course
 
-router.put("/updatecourse:id", updateCourse);
+router.put("/updatecourse/:id", updateCourse);
 export { router };

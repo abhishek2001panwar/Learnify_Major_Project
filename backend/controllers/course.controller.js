@@ -39,7 +39,29 @@ export const postCourse = async (req, res) => {
 };
 // controller for single course
 
-export const getCourse = async (req, res) => {};
+export const getCourse = async (req, res) => {
+  try {
+    const { id } = req.params; // Yahan 'params' se 'id' extract karna chahiye
+    const course = await Course.findById(id);
+
+    if (!course) {
+      return res.status(404).json({
+        error: "Course not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Course retrieved successfully",
+      course: course
+    });
+  } catch (error) {
+    console.error("Error getting course:", error.message);
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+
+};
 
 // controller for updating course
 
