@@ -70,7 +70,7 @@ function Horizontal() {
                   <span>
                     <i className="ri-calendar-event-line mr-2"></i>
                   </span>
-                  <a href={`/carouseldetail/${elem._id}`}>View Course</a>
+                  <Link href={`/carouseldetail/${elem._id}`}>View Course</Link>
                 </h1>
               </div>
             </div>

@@ -10,6 +10,8 @@ import {
   Button,
 } from "@nextui-org/react";
 import Sidebar from "./partials/Sidebar";
+import { motion } from "framer-motion"
+
 
 function Courses() {
 
@@ -38,7 +40,13 @@ fetchData();
           <h1 className="ml-[40vh] text-3xl font-semibold  p-10 text-center">
             Available Courses
           </h1>
-          <div className="w-[80%] bg-transparent ml-[40vh]   p-20 flex flex-wrap gap-8">
+          <motion.div 
+        transition={{
+          ease: "linear",
+          duration: 2,
+          x: { duration: 1 }
+        }}
+          className="w-[80%] bg-transparent ml-[40vh]   p-20 flex flex-wrap gap-8">
 
             { courses.map((elem ,index) => {
               return  <Card key={index} className="max-w-[400px]">
@@ -64,7 +72,7 @@ fetchData();
             </Card>
             })}
            
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
