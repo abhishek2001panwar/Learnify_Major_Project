@@ -25,8 +25,8 @@ function Contactus() {
       if (response.ok) {
         setEmail("");
         setMessage("");
+        response =""
       }
-      response =""
      
     } catch (error) {
       console.error("Error sending message:", error.message);

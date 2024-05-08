@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Sidebar from "./partials/Sidebar";
 import {  useNavigate } from "react-router-dom";
@@ -46,10 +47,17 @@ const notify = () => toast('Welcome to Profile! you are now logged IN');
       });
       const data = await response.json();
       if (response.ok) {
-        setTimeout(function() {
-          notify();
-          navigate('/profile');
-        }, 2000); 
+        if(data.isAdmin){
+          setTimeout(function() {
+            notify();
+            navigate('/admin/users');
+          }, 2000);
+        } else {
+          setTimeout(function() {
+            notify();
+            navigate('/profile');
+          }, 2000); 
+        }
       }
       console.log(data);
     } catch (error) {
@@ -57,6 +65,8 @@ const notify = () => toast('Welcome to Profile! you are now logged IN');
       throw new Error(error);
     }
   };
+
+ 
   return (
     <div>
       <h2 className="text-3xl ">Login</h2>

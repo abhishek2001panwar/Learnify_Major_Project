@@ -1,25 +1,15 @@
-// Middleware to check if user is admin
+
+export function isAuthenticated(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(401).json({ message: "Unauthorized" });
+    }
+    next();
+}
+// authMiddleware.js
 export function isAdmin(req, res, next) {
-    // Assuming you have a session-based authentication system
-    if (req.session && req.session.user && req.session.user.isAdmin) {
-        // User is admin, allow access
-        next();
-    } else {
-        // User is not admin, redirect or send unauthorized error
-        res.status(403).send('Unauthorized');
+    // Check if user is authenticated and is admin
+    if (!req.isAuthenticated() || !req.user.isAdmin) {
+        return res.status(403).json({ message: "Forbidden" });
     }
+    next();
 }
-
-// Middleware to check if user is logged in
- export  function isAuthenticated(req, res, next) {
-    // Assuming you have a session-based authentication system
-    if (req.session && req.session.user) {
-        // User is logged in, allow access
-        next();
-    } else {
-        // User is not logged in, redirect to login page or send unauthorized error
-        res.status(401).send('Unauthorized');
-    }
-}
-
-
