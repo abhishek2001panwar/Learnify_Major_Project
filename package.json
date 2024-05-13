@@ -21,7 +21,8 @@
     "react-icon": "^1.0.0",
     "react-player": "^2.16.0",
     "react-router-dom": "^6.23.0",
-    "remixicon": "^4.2.0"
+    "remixicon": "^4.2.0",
+    "text-readability": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

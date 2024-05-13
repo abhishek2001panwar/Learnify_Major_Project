@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProject, getAllProjects, getProjectById } from '../controllers/project.controller.js';
+import { getProject, getAllProjects, getProjectById ,deleteProject ,updateProject} from '../controllers/project.controller.js';
 
 const router = express.Router();
 
@@ -11,5 +11,11 @@ router.get('/getallproject', getAllProjects);
 
 // Route for getting a project by ID
 router.get('/getoneproject/:id', getProjectById);
+router.delete('/deleteproject/:id', deleteProject);
+router.patch('/updateproject/:id', updateProject);
+
+
+
+
 
 export { router };

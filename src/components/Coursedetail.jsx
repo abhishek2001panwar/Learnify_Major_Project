@@ -49,11 +49,11 @@ function Coursedetail() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto mt-8 bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">{course.title}</h2>
-      <p className="text-gray-700 mb-4"> {course.description}</p>
+    <div className="max-w-3xl mx-auto mt-8 bg-white p-6 rounded-lg ">
+      {/* <h2 className="text-2xl font-bold mb-4">{course.title}</h2>
+      <p className="text-gray-700 mb-4"> {course.description}</p> */}
       <div
-        className="text-gray-700 mb-4"
+        className="text-gray-700 mb-4 shadow-lg"
         dangerouslySetInnerHTML={{ __html: course.content }}
       />
       {/* Render more details as needed */}

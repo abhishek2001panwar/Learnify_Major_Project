@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -12,16 +12,36 @@ import {
 import Sidebar from "./partials/Sidebar";
 
 function MyCourses() {
+  const [news, setnews] = useState([]);
+
+ useEffect(()=>{
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=5ba7f2139b974424b96e2d208202bd76"
+      );
+      const data = await response.json();
+      setnews(data.articles);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchData();
+ }, [])
   return (
     <>
       <div className="flex w-full">
         <Sidebar />
         <div>
           <h1 className="ml-[40vh] text-3xl font-semibold  p-10 text-center">
-             MyCourses
+            MyCourses
           </h1>
           <div className="w-[80%] bg-transparent ml-[40vh]   p-20 flex flex-wrap gap-8">
-            <Card className="max-w-[400px]">
+
+
+            { news.map((elem ,index)=>(
+              <Card className="max-w-[400px]">
               <CardHeader className="flex gap-3">
                 <i class="ri-arrow-right-circle-fill text-3xl"></i>
 
@@ -32,9 +52,8 @@ function MyCourses() {
               <Divider />
               <CardBody>
                 <p>
-                  Make beautiful websites regardless of your design
-                  experience.Make beautiful websites regardless of your design
-                  experience.
+                {elem.title}
+                {elem.content}
                 </p>
               </CardBody>
               <Divider />
@@ -45,7 +64,11 @@ function MyCourses() {
                   </Button>
                 </Link>
               </CardFooter>
-            </Card>
+            </Card> 
+            )
+            )
+            }
+          
           </div>
         </div>
       </div>

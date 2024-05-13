@@ -30,13 +30,13 @@ function Trending() {
 fetchData();
   })
   return (
-    <div className="w-full h-screen p-10 mb-20 m-10">
+    <div className="w-full   h-screen overflow-auto p-10 mb-20 m-10">
       <h1 className="text-3xl font-light p-10">Popular Courses</h1>
 
-      <div className="w-full flex flex-wrap overflow-y-auto gap-8   mb-20">
+      <div className="w-full flex  flex-wrap overflow-y-auto gap-8 p-4   mb-20">
      
       { courses.map((elem ,index) => {
-              return  <Card key={index} className="max-w-[400px]">
+              return  <Card key={index} className="max-w-[458px]">
               <CardHeader className="flex gap-3">
                 <i class="ri-arrow-right-circle-fill text-3xl"></i>
 

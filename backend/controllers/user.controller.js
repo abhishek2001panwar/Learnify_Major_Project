@@ -53,10 +53,13 @@ export const loginUser = async (req, res) => {
       const token = jwt.sign({ _id: user._id }, "abhishek", {
         expiresIn: "1h",
       });
+      const isAdmin = await checkIfUserIsAdmin(req.body.email);
+
       res.status(200).json({
         message: "user logged in successfully",
         token: token,
         user: user,
+        isAdmin: isAdmin,
       });
     }
   } catch (error) {
@@ -69,16 +72,16 @@ export const loginUser = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
   try {
+    // Clear the JWT from client-side storage
+    res.clearCookie('jwtToken'); // Clear the JWT from cookies if using cookies for storage
+    // or
+    // localStorage.removeItem('jwtToken'); // Clear the JWT from localStorage if using localStorage for storage
 
-    
-    res.status(200).json({
-      message: "user logout successfully",
-    });
+    // Respond with a success message
+    return res.status(200).json({ message: "User logged out successfully" });
   } catch (error) {
     console.error("Error logging out user:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while logging out the user" });
+    return res.status(500).json({ error: "An error occurred while logging out the user" });
   }
 };
 
@@ -98,3 +101,17 @@ console.log(error , "error in getting all user")
 
 
 }
+export const deleteUser = async(req, res)=>{
+  try {
+    const user = await User.findByIdAndDelete(req.params.id)
+    res.status(200).json({
+      message: "user deleted successfully"
+    })
+  } catch (error) {
+    console.log(error, "error in deleting user")
+  }
+}
+ export const checkIfUserIsAdmin = async (email) => {
+  const user = await User.findOne({ email });
+  return user.isAdmin 
+};

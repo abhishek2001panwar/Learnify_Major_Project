@@ -1,5 +1,5 @@
 import express from 'express';
-import {getBlogs,getAllBlogs,getOneBlogs} from  '../controllers/blog.controller.js';
+import {getBlogs,getAllBlogs,getOneBlogs,deleteBlog ,updateBlog} from  '../controllers/blog.controller.js';
 
 const router = express.Router();
 
@@ -9,6 +9,10 @@ const router = express.Router();
 router.post('/addBlog', getBlogs )
 router.get('/getallblog', getAllBlogs )
 router.get('/getoneblog/:id', getOneBlogs )
+router.delete('/deleteblog/:id', deleteBlog )
+router.patch('/updateblog/:id', updateBlog )
+
+
 
 
 

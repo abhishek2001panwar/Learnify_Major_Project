@@ -1,59 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 function CoursesAdmin() {
-  const [course, setcourse] = useState([]);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (req, res) => {
+    const fetchData = async () => {
       try {
         const response = await fetch("/api/v1/courses/allcourses");
         const data = await response.json();
-        setcourse(data.courses);
+        setCourses(data.courses);
       } catch (error) {
         console.log(error);
-        res.status(500).json({ message: error.message });
       }
     };
     fetchData();
-  });
+  }, []);
+  
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`/api/v1/courses/deletecourse/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setCourses(courses.filter(course => course._id !== id));
+      } else {
+        console.log("Failed to delete course");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="mt-20">
-      <h1 className="text-2xl font-light mb-10  flex justify-center items-center">Courses</h1>
+        <h1 className="text-2xl font-light mb-10 flex justify-center items-center">Courses</h1>
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Course Name
               </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Description
-              </th>
-              {/* <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Actions
-              </th> */}
+              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {course.map((course, index) => (
+            {courses.map((course, index) => (
               <tr key={index}>
                 <td className="px-6 py-4 whitespace-nowrap">{course.title}</td>
                 <td className="px-6 py-4 whitespace-nowrap flex gap-5">
                   <Button size="sm" color="primary" variant="ghost">
-                    Edit
-                  </Button>
-                  <Button size="sm" color="danger" variant="ghost">
-                    Delete{" "}
+                    <Link to={`/editCourse/${course._id}`}>Edit</Link>
+                  </Button> 
+                  <Button size="sm" color="danger" variant="ghost" onClick={() => handleDelete(course._id)}>
+                    Delete
                   </Button>
                 </td>
               </tr>

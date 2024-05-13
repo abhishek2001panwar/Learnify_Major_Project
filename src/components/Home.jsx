@@ -16,10 +16,10 @@ function Home() {
       <div className=' w-[20%] h-screen  '>
        <Sidebar />
        </div>
-       <div className='  w-[80%] overflow-auto '>
-        <Topnav/>
-        <Horizontal/>
-        <Trending/>
+       <div className='relative w-[80%] overflow-auto'>
+        <Topnav className="z-99"/>
+        <Horizontal />
+        <Trending className/>
        
        </div>
       </div>

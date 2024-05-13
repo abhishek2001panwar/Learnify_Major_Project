@@ -1,13 +1,34 @@
 import React, { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddProject = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [projectLink, setProjectLink] = useState("");
+  const notify = () => toast('project added checkout user page');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    try {
+      
+      const response = await fetch("/api/v1/project/addproject", { 
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          projectLink
+        })
+      });
+      const data = await response.json()
+    } catch (error) {
+      console.log(error)
+    }
     setTitle("");
     setDescription("");
+    setProjectLink("");
   };
 
   return (
@@ -38,12 +59,26 @@ const AddProject = () => {
             required
           ></textarea>
         </div>
+        <div className="mb-4">
+          <label htmlFor="projectLink" className="block text-gray-700 font-medium mb-2">projectLink</label>
+          <textarea
+            id="projectLink"
+            value={projectLink}
+            onChange={(e) => setProjectLink(e.target.value)}
+            rows="4"
+            className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-indigo-500"
+            placeholder="Enter projectLink"
+            required
+          ></textarea>
+        </div>
         <button
+        onClick={notify}
           type="submit"
           className="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-white hover:text-teal-500 transition duration-300"
         >
           Add Project
         </button>
+        <Toaster />
       </form>
     </div>
   );

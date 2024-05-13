@@ -33,3 +33,12 @@ export const getAllContacts = async (req,res) => {
   
  }
 }
+export const deleteContact = async(req,res)=>{
+  try {
+    const {id}= req.params;
+    const contact = await Contact.findByIdAndDelete(id);
+  } catch (error) {
+    console.log(error)
+    throw new Error(error.message)
+  }
+}

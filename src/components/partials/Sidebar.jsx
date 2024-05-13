@@ -36,12 +36,12 @@ function Sidebar() {
             <span>Blog</span>
           </div>
         </Link>
-        <Link to="/mycourses">
+        {/* <Link to="/mycourses">
           <div className="flex items-center p-4 active:border-2 active:rounded-md">
           <i class="ri-bookmark-fill pr-3"></i>
             <span>My courses</span>
           </div>
-        </Link>
+        </Link> */}
 
         <h1 className="mt-5  mb-4 pl-3 border-b-2 pb-3 border-zinc-500">More Information</h1>
         <Link to="/about">

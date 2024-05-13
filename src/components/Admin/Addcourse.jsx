@@ -1,16 +1,28 @@
 import React, { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Addcourse = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const notify = () => toast('Course added checkout user page');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+const course = {title , description, content}
+ try {
+  const response = await fetch("/api/v1/courses/postcourse", {
+    method:"POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(course),
+  })
 
-    // Handle form submission here, e.g., send data to backend
+ } catch (error) {
+  console.log(error)
 
-    // Reset form fields after submission
+ }
     setTitle("");
     setDescription("");
     setContent("");
@@ -57,11 +69,13 @@ const Addcourse = () => {
           ></textarea>
         </div>
         <button
+        onClick={notify}
           type="submit"
           className="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-white hover:text-teal-500 transition duration-300"
         >
           Add Course
         </button>
+        <Toaster />
       </form>
     </div>
   );

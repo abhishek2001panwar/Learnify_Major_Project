@@ -15,7 +15,19 @@ function UserAdmin() {
       }
     };
     fetchData();
-  });
+  }); 
+
+  const handleDelete = async(id)=>{
+    try {
+      const response = await fetch(`/api/v1/user/deleteuser/${id}`, {
+        method: "DELETE",
+      });
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: error.message });
+    }
+  }
   return (
     <>
 
@@ -51,10 +63,14 @@ function UserAdmin() {
                   <td className="px-6 py-4 whitespace-nowrap">{elem.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{elem.email}</td>
                   <td className="px-6 py-4 whitespace-nowrap gap-5 flex">
+                  <Button size="sm" color={elem.isAdmin ? "danger" : "primary"} variant="ghost">
+                    {elem.isAdmin ? "Admin" : "User"}
+
+                  </Button>
                   <Button size="sm" color="primary" variant="ghost">
                     Edit
                   </Button>
-                  <Button size="sm" color="danger" variant="ghost">
+                  <Button onClick={()=> handleDelete(elem._id)} size="sm" color="danger" variant="ghost">
                     Delete{" "}
                   </Button>
                   </td>

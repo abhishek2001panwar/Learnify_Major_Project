@@ -36,9 +36,9 @@ function Contactus() {
     <>
       <div className="flex w-full">
         <Sidebar />
-        <div className="w-[80%] bg-transparent ml-[40vh] p-8 ">
-          <h1>Contact Us</h1>
-          <form onSubmit={handleSubmit}>
+        <div className="w-1/2 flex  gap-5 shadow-md bg-transparent ml-[40vh] p-8 absolute top-1/2 left-1/3 rounded-md -translate-x-1/2 -translate-y-1/2 border-2 ">
+          <form onSubmit={handleSubmit} className="w-1/2 ">
+            <h1 className=" mb-2 text-xl font-light text-center">Contact us</h1>
             <Input
               type="email"
               label="Email"
@@ -52,7 +52,7 @@ function Contactus() {
             <Textarea
               label="message"
               placeholder="Enter your message"
-              className="max-w-xs mb-5 bg-white default"
+              className="max-w-xs mb-5  default"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -61,6 +61,7 @@ function Contactus() {
             </Button>
             <Toaster />
           </form>
+          <img className="h-[40vh] rounded-2xl w-1/2" src="https://media.istockphoto.com/id/1776836524/photo/contact-us-written-cartoon-style-speech-bubble-on-blue-background.jpg?s=612x612&w=0&k=20&c=rMEY1OsxZ21wVHbKCsi6lj9fo8RwLkKLmMvRjq88ZPo=" alt="" />
         </div>
       </div>
     </>

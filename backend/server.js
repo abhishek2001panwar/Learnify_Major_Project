@@ -7,19 +7,17 @@ import {router as blogRouter} from './routes/blog.routes.js'
 import {router as projectRouter} from './routes/project.routes.js'
 import {router as carouselRouter} from './routes/carousel.routes.js'
 import {router as adminRoute} from './routes/carousel.routes.js'
-
-
-
-
 import cors from 'cors'
-
 import dotenv from 'dotenv'
+import session from 'express-session'
 const app = express()
 dotenv.config()
-
 connectDb()
 
 app.use(cors())
+app.use(session({ secret: 'secret-key', resave: false, saveUninitialized: false }));
+app.use(express.json())
+
 
 
 //routes congigation

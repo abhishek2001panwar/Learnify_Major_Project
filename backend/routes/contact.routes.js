@@ -1,5 +1,5 @@
 import express from 'express';
-import {getContacts , getAllContacts} from '../controllers/contact.controller.js';
+import {getContacts , getAllContacts ,deleteContact} from '../controllers/contact.controller.js';
 import {isAuthenticated} from '../middleware/adminmiddleware.js'
 const router = express.Router();
 
@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.post('/contactus', isAuthenticated ,getContacts);
 router.get('/getcontact', getAllContacts);
+router.delete('/deletecontact/:id', deleteContact);
+
 
 
 export { router}

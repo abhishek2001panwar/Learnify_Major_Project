@@ -1,15 +1,25 @@
 import React, { useState } from "react";
-
+import toast, { Toaster } from 'react-hot-toast';
 const Addblog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const notify = () => toast('Blog added checkout user page');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Handle form submission here, e.g., send data to backend
-
-    // Reset form fields after submission
+    const blog = { title, content };
+    try {
+      const response = await fetch("/api/v1/blog/addblog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(blog),
+      });
+      const data = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
     setTitle("");
     setContent("");
   };
@@ -19,7 +29,12 @@ const Addblog = () => {
       <h2 className="text-2xl font-light mb-4">Add New Blog</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4 mt-5">
-          <label htmlFor="title" className="block text-gray-700 font-medium mb-2">Title</label>
+          <label
+            htmlFor="title"
+            className="block text-gray-700 font-medium mb-2"
+          >
+            Title
+          </label>
           <input
             type="text"
             id="title"
@@ -31,7 +46,12 @@ const Addblog = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="content" className="block text-gray-700 font-medium mb-2">Content</label>
+          <label
+            htmlFor="content"
+            className="block text-gray-700 font-medium mb-2"
+          >
+            Content
+          </label>
           <textarea
             id="content"
             value={content}
@@ -42,13 +62,15 @@ const Addblog = () => {
             required
           ></textarea>
         </div>
-       
+
         <button
+        onClick={notify}
           type="submit"
           className="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-white hover:text-teal-500 transition duration-300"
         >
           Add Blog
         </button>
+        <Toaster />
       </form>
     </div>
   );

@@ -51,7 +51,7 @@ function Horizontal() {
   }
 
   return (
-    <div className="w-full h-[70vh] relative bg-zinc-100 rounded-3xl">
+    <div className="w-full h-[70vh] relative bg-zinc-100 rounded-3xl -z-50">
       <div className="overflow-hidden">
         <div className="w-full h-[70vh] relative flex">
           {/* Render current course */}
@@ -60,19 +60,22 @@ function Horizontal() {
               <h1 className="text-3xl font-bold mb-7 text-slate-400">{elem.title}</h1>
               <h2 className="w-1/2">{elem.description}</h2>
               <div className="flex flex-col gap-5 mt-2">
+              <Link to={`${elem.projectLink}`} >Source Code</Link>
+              <Link to={`/carouseldetail/${elem._id}`}>View Course</Link>
+{/* 
                 <h1>
                   <span>
                     <i className="ri-calendar-event-line mr-2 mb-5"></i>
                   </span>
-                  <Link to={`${elem.projectLink}`} >Source Code</Link>
+                  <Link href={`${elem.projectLink}`} >Source Code</Link>
                 </h1>
                 <h1>
                   <span>
                     <i className="ri-calendar-event-line mr-2"></i>
                   </span>
-                  <Link href={`/carouseldetail/${elem._id}`}>View Course</Link>
-                </h1>
-              </div>
+                  <Link href={`/carouseldetail/${elem._id}`}>View Course</Link></h1> */}
+                  </div>
+        
             </div>
           ))}
         </div>

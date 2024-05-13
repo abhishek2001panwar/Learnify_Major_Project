@@ -23,5 +23,5 @@ router.delete("/deletecourse/:id", deleteCourse);
 
 //route for updating a course
 
-router.put("/updatecourse/:id", updateCourse);
+router.patch("/updatecourse/:id", updateCourse);
 export { router };

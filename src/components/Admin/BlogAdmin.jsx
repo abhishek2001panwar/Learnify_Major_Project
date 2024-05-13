@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from '@nextui-org/react';
+import { Link } from 'react-router-dom';
 function BlogAdmin() {
     const [blog, setblog] = useState([]);
 
@@ -16,6 +17,19 @@ function BlogAdmin() {
         };
         fetchData();
       });
+
+const handleDelete = async(id)=>{
+  try {
+    const response = await fetch(`/api/v1/blog/deleteblog/${id}`, {
+      method: "DELETE",
+    });
+  //  if(response.ok){
+  //   setblog(blog.filter((blog)=>blog._id!==id));
+  //  }
+  } catch (error) {
+    console.log(error);
+  }
+}
   return (
     <>
      <div className="mt-20">
@@ -32,10 +46,12 @@ function BlogAdmin() {
               <tr key={index}>
                 <td className="px-6 py-4 whitespace-nowrap">{blog.title}</td>
                 <td className="px-6 py-4 whitespace-nowrap flex gap-5">
+
                 <Button size="sm" color="primary" variant="ghost">
-                    Edit
+                  <Link to={`/editBlog/${blog._id}`}>Edit</Link>
+                  
                   </Button>
-                  <Button size="sm" color="danger" variant="ghost">
+                  <Button onClick={()=>handleDelete(blog._id)} size="sm" color="danger" variant="ghost">
                     Delete{" "}
                   </Button>
                 </td>

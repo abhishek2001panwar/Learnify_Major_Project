@@ -2,7 +2,7 @@ import { Project } from "../models/project.model.js";
 
 export const getProject = async (req, res) => {
   try {
-    const { title, description , projectLink } = req.body;
+    const { title, description, projectLink } = req.body;
 
     const newProjectPost = new Project({
       title,
@@ -21,22 +21,18 @@ export const getProject = async (req, res) => {
   }
 };
 export const getAllProjects = async (req, res) => {
- try {
-    const project = await Project.find({})
+  try {
+    const project = await Project.find({});
 
     return res.status(201).json({
       message: " all Project retrived successfully",
       project: project,
     });
-
-
- } catch (error) {
-  console.log(error , " error getting projects")
-  throw new Error(error.ErrorMessage)
- }
-
-
-}
+  } catch (error) {
+    console.log(error, " error getting projects");
+    throw new Error(error.ErrorMessage);
+  }
+};
 // Controller function to get a project by ID
 // export const getProjectById = async (req, res) => {
 //   try {
@@ -82,3 +78,38 @@ export const getProjectById = async (req, res) => {
     });
   }
 };
+
+export const deleteProject = async (req , res) => {
+  try {
+    const { id } = req.params;
+    const project = await Project.findByIdAndDelete(id);
+    
+    return res.status(200).json({
+      message: "Project deleted successfully",
+    });
+
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.ErrorMessage);
+  }
+};
+
+export const updateProject = async(req ,res)=>{
+  try {
+    const { id } = req.params;
+    const { title, description, projectLink } = req.body;
+    const project = await Project.findByIdAndUpdate(id, {
+      title,
+      description,
+      projectLink,
+    });
+    return res.status(200).json({
+      message: "Project updated successfully",
+      project,
+    });
+    
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.ErrorMessage);
+  }
+}
