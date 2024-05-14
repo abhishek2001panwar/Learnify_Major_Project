@@ -18,7 +18,7 @@ function Home() {
        </div>
        <div className='relative w-[80%] overflow-auto'>
         <Topnav className="z-99"/>
-        <Horizontal />
+        <Horizontal className='-z-50' />
         <Trending className/>
        
        </div>

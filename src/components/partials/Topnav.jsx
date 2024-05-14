@@ -71,9 +71,9 @@ function Topnav() {
         <div className="absolute w-[70vh] max-h-[70vh] bg-zinc-200 m-14 overflow-auto z-99 rounded-md">
           {courses.map((item, index) => (
             <Link to={`/coursedetail/${item._id}`} key={index}>
-              <div className="flex items-center p-4 hover:bg-gray-100 ">
+              <div className="flex items-center p-4 hover:bg-gray-200 ">
                 <img src="" alt="" />
-                <span className="text-teal-600">{item.title}</span>
+                <span className="text-black">{item.title}</span>
               </div>
             </Link>
           ))}

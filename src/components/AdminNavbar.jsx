@@ -58,7 +58,7 @@ function AdminNavbar() {
             <span>Add project</span>
           </div>
         </Link>
-        <Link to="/AdminRoute/addcourses">
+        <Link to="/AdminRoute/addcourse">
           <div className="flex items-center p-4 active:border-2 active:rounded-md">
           <i class="ri-graduation-cap-fill pr-3"></i>
             <span>Add course</span>

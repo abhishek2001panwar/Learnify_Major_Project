@@ -280,12 +280,13 @@ const SignupForm = ({ toggleForm }) => {
           >
             Sign up
           </button>
-      <button className="mt-3" onClick={toggleForm}>
-        ALready a user ?Login
+      <button className="mt-3 ml-16" onClick={toggleForm}>
+        ALready a user? Login
       </button>
           <Toaster />
         </div>
         </div>
+        <img className="w-[30vh] h-[30vh] absolute top-[5vh] left-[60vh] rounded-2xl shadow-2xl" src="https://media.istockphoto.com/id/1431925577/photo/woman-hand-showing-vr-interface-of-login-secure-access-to-users-personal-information.jpg?s=612x612&w=0&k=20&c=V7bWvDiWHeG_Iv40XLcv-D2diNW7cBiAr7MjIsl8cM4=" alt="" />
       </form>
 
     </div>
