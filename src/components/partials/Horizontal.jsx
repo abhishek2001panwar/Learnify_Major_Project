@@ -105,6 +105,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, button } from "@nextui-org/react";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 function Horizontal() {
   const [carousel, setCarousel] = useState([]);
@@ -114,9 +115,12 @@ function Horizontal() {
 
   const fetchData = async (page) => {
     try {
-      const response = await fetch(`/api/v1/carousel/getallcarousel?page=${page}&limit=6`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `/api/v1/carousel/getallcarousel?page=${page}&limit=6`,
+        {
+          method: "GET",
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch carousel data");
       }
@@ -151,33 +155,45 @@ function Horizontal() {
         <div className="flex flex-wrap gap-4 ml-20 ">
           {carousel.map((product, index) => {
             return (
-              <Card key={index} className="py-4 -z-50 ">
-                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                  <p className="text-tiny uppercase font-bold">featured </p>
-                  <small className="text-default-500">course</small>
-                  <h4 className="font-light text-large ">{product.title}</h4>
-                </CardHeader>
-                <CardBody className="overflow-visible py-2">
-                  <Image
-                    alt="Card background"
-                    className="object-cover rounded-xl"
-                    src="https://nextui.org/images/hero-card-complete.jpeg"
-                    width={270}
-                    height={150}
-                  />
-                </CardBody>
-              </Card>
+              <Link to={`/cdetail/${product._id}`}>
+                <Card key={index} className="py-4 -z-50  ">
+                  <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                    <p className="text-tiny uppercase font-bold">featured </p>
+                    <small className="text-default-500">course</small>
+                    <h4 className="font-light text-large ">{product.title}</h4>
+                  </CardHeader>
+                  <CardBody className="overflow-visible py-2">
+                    <Image
+                      alt="Card background"
+                      className="object-cover rounded-xl"
+                      src="https://nextui.org/images/hero-card-complete.jpeg"
+                      width={270}
+                      height={150}
+                    />
+                  </CardBody>
+                </Card>
+              </Link>
             );
           })}
         </div>
       </div>
       <div className="flex gap-2 justify-center mt-8">
-
-       
-        <Button onClick={handlePrev} color="success" size="sm" variant="ghost" disabled={page === 1}>
+        <Button
+          onClick={handlePrev}
+          color="success"
+          size="sm"
+          variant="ghost"
+          disabled={page === 1}
+        >
           Prev
         </Button>
-        <Button onClick={handleNext} color="success" size="sm" variant="ghost" disabled={page === totalPages}>
+        <Button
+          onClick={handleNext}
+          color="success"
+          size="sm"
+          variant="ghost"
+          disabled={page === totalPages}
+        >
           Next
         </Button>
       </div>

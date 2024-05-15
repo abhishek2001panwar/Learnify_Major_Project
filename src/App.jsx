@@ -31,6 +31,9 @@ import AdminAddcoursePage from './components/AdminAddcoursePage'
 import Admineditproject from './components/Admin/Admineditproject'
 import Admineditcourse from './components/Admin/Admineditcourse'
 import Admineditblog from './components/Admin/Admineditblog'
+import Payment from './components/MyPayment'
+import MyPayment from './components/MyPayment'
+import Featureddetail from './components/Featureddetail'
 
 
 
@@ -50,10 +53,12 @@ function App() {
         <Route path="/project" element={<Project/>} />
         <Route path='/projectdetail/:id' element={<Projectdetail />} />
         <Route path='/carouseldetail/:id' element={<Carouseldetail />} />
+        <Route path="/cdetail/:id" element={<Featureddetail/>} />
         <Route path="/blog" element={<Blog/>} />
         <Route path="/blogdetail/:id" element={<Blogdetail/>} />
         <Route path="/mycourses" element={<MyCourses/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/payment" element={<MyPayment/>} />
 
 
       {/* Admin routes */}
