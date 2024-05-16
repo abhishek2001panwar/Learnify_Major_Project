@@ -6,8 +6,8 @@ import {router as contactRouter} from './routes/contact.routes.js'
 import {router as blogRouter} from './routes/blog.routes.js'
 import {router as projectRouter} from './routes/project.routes.js'
 import {router as carouselRouter} from './routes/carousel.routes.js'
-import {router as adminRoute} from './routes/carousel.routes.js'
-
+import {router as adminRouter} from './routes/carousel.routes.js'
+import {router as buildRouter} from './routes/frontend.routes.js'
 import {router as paymentRoute} from './routes/payment.routes.js'
 import cors from 'cors'
 import dotenv from 'dotenv'
@@ -30,8 +30,9 @@ app.use("/api/v1/contact", contactRouter)
 app.use("/api/v1/blog", blogRouter)
 app.use("/api/v1/project", projectRouter)
 app.use("/api/v1/carousel", carouselRouter)
-app.use("/api/v1/admin", adminRoute)
+app.use("/api/v1/admin", adminRouter)
 app.use("/api/v1/payment", paymentRoute)
+app.use("/", buildRouter)
 
 
 
