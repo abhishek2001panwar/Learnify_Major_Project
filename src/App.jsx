@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Form, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Courses from './components/Courses'
 import About from './components/About'
@@ -34,6 +34,7 @@ import Admineditblog from './components/Admin/Admineditblog'
 import Payment from './components/MyPayment'
 import MyPayment from './components/MyPayment'
 import Featureddetail from './components/Featureddetail'
+import Forms from './components/Forms'
 
 
 
@@ -59,6 +60,9 @@ function App() {
         <Route path="/mycourses" element={<MyCourses/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/payment" element={<MyPayment/>} />
+        <Route path="/form" element={<Forms/>} />
+
+
 
 
       {/* Admin routes */}

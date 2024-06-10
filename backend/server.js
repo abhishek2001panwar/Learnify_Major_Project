@@ -9,6 +9,7 @@ import {router as carouselRouter} from './routes/carousel.routes.js'
 import {router as adminRouter} from './routes/carousel.routes.js'
 import {router as buildRouter} from './routes/frontend.routes.js'
 import {router as paymentRoute} from './routes/payment.routes.js'
+import {router as fileRoute} from './routes/file.routes.js'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import session from 'express-session'
@@ -32,6 +33,9 @@ app.use("/api/v1/project", projectRouter)
 app.use("/api/v1/carousel", carouselRouter)
 app.use("/api/v1/admin", adminRouter)
 app.use("/api/v1/payment", paymentRoute)
+app.use("/api/v1/file", fileRoute)
+
+
 app.use("/", buildRouter)
 
 
