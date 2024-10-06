@@ -42,7 +42,7 @@ app.use("/", buildRouter)
 
 
 // mongodb connection
-app.listen(process.env.PORT || 4000, () => {
+app.listen(process.env.PORT || 4001, () => {
   console.log("Example app listening on port 4000!", process.env.PORT || 4000);
 });
 
